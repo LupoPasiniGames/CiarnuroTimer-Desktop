@@ -7,14 +7,15 @@
   "scripts": {
     "start": "electron .",
     "update": "./updateAssets.sh",
-    "build": "electron-packager . --out out/ --icon appicon.png",
-    "buildmac": "electron-packager . --out out/ --icon appicon.icns"
+    "buildwin": "npm run update && electron-packager . --platform win32 --arch ia32 --out out/ --icon icons/appicon.ico",
+    "buildlinux": "npm run update && electron-packager . --platform linux --out out/ --icon icons/appicon.png",
+    "buildmac": "npm run update && electron-packager . --platform darwin --out out/ --icon icons/appicon.icns"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LupoPasiniGames/CiarnuroTimer-Desktop.git"
   },
-  "author": "",
+  "author": "LPG",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/LupoPasiniGames/CiarnuroTimer-Desktop/issues"
