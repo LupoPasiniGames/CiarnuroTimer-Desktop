@@ -1,0 +1,23 @@
+{
+  "name": "ciarnurotimer-desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "update": "./updateAssets.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LupoPasiniGames/CiarnuroTimer-Desktop.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/LupoPasiniGames/CiarnuroTimer-Desktop/issues"
+  },
+  "homepage": "https://github.com/LupoPasiniGames/CiarnuroTimer-Desktop#readme",
+  "devDependencies": {
+    "electron": "^8.0.3"
+  }
+}
