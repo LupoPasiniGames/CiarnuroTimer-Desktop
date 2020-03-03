@@ -1,4 +1,4 @@
-const { app, BrowserWindow, screen } = require("electron");
+const { app, BrowserWindow, screen, dialog } = require("electron");
 
 function startup() {
   let { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -14,6 +14,26 @@ function startup() {
   });
 
   appWindow.removeMenu();
+  appWindow.on("close", async (event) => {
+    event.preventDefault(); //Prevents the app from closing immediately
+    let leaveConfirm = await appWindow.webContents.executeJavaScript("leaveConfirmRequired");
+
+    if (leaveConfirm) {
+      let clickedButton = dialog.showMessageBoxSync(appWindow, {
+        type: "info",
+        buttons: ["Annulla", "Esci"],
+        defaultId: 0,
+        message: "Sei sicuro di voler uscire?\nLa partita è ancora in corso!"
+      });
+
+      if (clickedButton == 1) {
+        app.exit()
+      }
+    } else {
+      app.exit();
+    }
+  });
+
   appWindow.loadFile("assets/CiarnuroTimer-Web/index.html");
 }
 
