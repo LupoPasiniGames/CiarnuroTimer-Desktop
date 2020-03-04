@@ -8,6 +8,8 @@ async function startup() {
   const appWindow = new BrowserWindow({
     width: width,
     height: height,
+    minWidth: 640,
+    minHeight: 480,
     backgroundColor: "#000000",
     show: false,
     webPreferences: {
