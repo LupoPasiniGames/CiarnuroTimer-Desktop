@@ -8,6 +8,7 @@ function startup() {
   const appWindow = new BrowserWindow({
     width: width,
     height: height,
+    backgroundColor: "#000000",
     webPreferences: {
       devTools: false
     }
