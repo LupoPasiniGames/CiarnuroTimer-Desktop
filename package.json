@@ -8,7 +8,7 @@
     "start": "electron .",
     "update": "./updateAssets.sh",
     "buildwin": "npm run update && electron-packager . --platform win32 --arch ia32 --out out/ --icon icons/appicon.ico",
-    "buildlinux": "npm run update && electron-packager . --platform linux --out out/ --icon icons/appicon.png",
+    "buildlinux": "npm run update && electron-builder --linux",
     "buildmac": "npm run update && electron-packager . --platform darwin --out out/ --icon icons/appicon.icns"
   },
   "repository": {
@@ -23,6 +23,17 @@
   "homepage": "https://github.com/LupoPasiniGames/CiarnuroTimer-Desktop#readme",
   "devDependencies": {
     "electron": "^8.0.3",
+    "electron-builder": "^22.3.6",
     "electron-packager": "^14.2.1"
+  },
+  "build": {
+    "appId": "com.lpg.ciarnurotimer-desktop",
+    "directories": {
+      "output": "out"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "icons/appicon.png"
+    }
   }
 }
