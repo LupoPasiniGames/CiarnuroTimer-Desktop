@@ -14,8 +14,8 @@ function startup() {
   });
 
   appWindow.removeMenu();
+
   appWindow.on("close", async (event) => {
-    event.preventDefault(); //Prevents the app from closing immediately
     let leaveConfirm = await appWindow.webContents.executeJavaScript("leaveConfirmRequired");
 
     if (leaveConfirm) {
@@ -27,10 +27,8 @@ function startup() {
       });
 
       if (clickedButton == 1) {
-        app.exit()
+        app.exit();
       }
-    } else {
-      app.exit();
     }
   });
 
