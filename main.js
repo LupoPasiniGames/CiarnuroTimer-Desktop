@@ -1,4 +1,4 @@
-const { app, BrowserWindow, screen, dialog } = require("electron");
+const { app, BrowserWindow, screen, dialog, shell } = require("electron");
 
 function startup() {
   let { width, height } = screen.getPrimaryDisplay().workAreaSize;
@@ -30,6 +30,12 @@ function startup() {
         app.exit();
       }
     }
+  });
+
+  appWindow.webContents.on('new-window', function (e, url) {
+    //Opens external urls in the system browser
+    e.preventDefault();
+    shell.openExternal(url);
   });
 
   appWindow.loadFile("assets/CiarnuroTimer-Web/index.html");
